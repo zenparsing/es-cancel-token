@@ -34,16 +34,14 @@ The *CancelToken* constructor is a built-in constructor that creates and initial
 Creates and initializes a new *CancelToken* object by calling _executor_ with a function that, when called, requests cancellation.
 
 ```js
-// Create a token which requests cancellation
-// when a button is clicked.
+// Create a token which requests cancellation when a button is clicked.
 let token = new CancelToken(cancel => {
     $("#some-button").on("click", cancel);
 });
 ```
 
 ```js
-// Create a token which requests cancellation
-// when a promise is resolved
+// Create a token which requests cancellation when a promise is resolved
 let token = new CancelToken(cancel => {
     somePromise.then(cancel);
 });
@@ -56,8 +54,7 @@ Synchronously returns a Boolean value indicating whether cancellation has been r
 ```js
 async function f(cancelToken) {
     await a();
-    // Only execute `b` if task has not been
-    // cancelled.
+    // Only execute `b` if task has not been cancelled.
     if (!cancelToken.requested)
         await b();
 }
@@ -70,8 +67,7 @@ Returns a promise which will be resolved with a *CancelError* if cancellation ha
 ```js
 function delay(ms, cancelToken) {
     return new Promise((resolve, reject) => {
-        // Register rejection if cancellation
-        // is requested.
+        // Register rejection if cancellation is requested.
         cancelToken.promise.then(reject);
         setTimeout(_=> resolve(), ms);
     });
