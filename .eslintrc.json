@@ -1,0 +1,14 @@
+{
+  "extends": "airbnb",
+  "installedESLint": true,
+  "plugins": [
+    "react"
+  ],
+  "env": {
+    "node": true,
+    "jest": true
+  },
+  "rules": {
+    "no-underscore-dangle": 0
+  }
+}
